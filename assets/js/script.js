@@ -109,8 +109,11 @@ var status = $(this)
 var index = $(this)
 .closest(".list-group-item")
 .index();
+
+//update task in array and resave to localStorage
 tasks[status][index].text = text;
 saveTasks();
+
 //recreate p element
 var taskP = $("<p>")
   .addClass("m-1")
@@ -123,8 +126,8 @@ var taskP = $("<p>")
 $(".list-group").on("click", "span", function() {
   //get current text
   var date = $(this)
-  .val()
-  .trim()
+  .text()
+  .trim();
   //create new input element
   var dateInput = $("<input>")
     .attr("type", "text")
